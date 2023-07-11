@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .tag {
+    @apply inline-block text-sm font-semibold bg-slate-600 rounded-full text-white px-2 py-1 me-2 mb-2;
+  }
+  .card {
+    @apply max-w-sm rounded overflow-hidden shadow-lg;
+  }
+  .card-title {
+    @apply text-purple-500 text-xl font-bold;
+  }
+}
