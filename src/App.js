@@ -27,10 +27,12 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="mx-6 my-10 flex flex-wrap gap-10 justify-center">
-      {images.map((image, i) => (
-        <Card image={image} key={i} />
-      ))}
+    <div className="container my-10 mx-auto flex justify-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+        {images.map((image, i) => (
+          <Card image={image} key={i} />
+        ))}
+      </div>
     </div>
   );
 }
