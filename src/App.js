@@ -1,5 +1,6 @@
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import Card from "./card";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -26,30 +27,9 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="m-4 flex flex-wrap gap-10">
-      {images.map((image) => (
-        <div className="card">
-          <img src={image.webformatURL} alt="" className="w-full" />
-          <div className="px-6 py-4">
-            <span className="card-title">Beautiful Photo By {image.user}</span>
-            <ul className="mt-2">
-              <li>
-                <strong>Views:</strong> {image.views}
-              </li>
-              <li>
-                <strong>Downloads:</strong> {image.downloads}
-              </li>
-              <li>
-                <strong>Likes:</strong> {image.likes}
-              </li>
-            </ul>
-          </div>
-          <div className="px-6 pb-2">
-            {image.tags.split(",").map((tag) => (
-              <span className="tag">#{tag}</span>
-            ))}
-          </div>
-        </div>
+    <div className="mx-6 my-10 flex flex-wrap gap-10 justify-center">
+      {images.map((image, i) => (
+        <Card image={image} key={i} />
       ))}
     </div>
   );
