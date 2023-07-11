@@ -12,4 +12,10 @@
   .card-title {
     @apply text-slate-600 text-xl font-bold;
   }
+  .btn {
+    @apply flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-500 text-white py-1 px-3 rounded shadow-md shadow-blue-200 font-semibold outline-none transition-all duration-300 hover:shadow-blue-300;
+  }
+  .search-input {
+    @apply appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pt-1 pb-0 px-3 outline-none;
+  }
 }

@@ -1,19 +1,32 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "./card";
+import Search from "./search";
 
 function App() {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const [term, setTerm] = useState("");
-  const getData = async () => {
+  const getData = async (text) => {
     const key = process.env.REACT_APP_PIXABAY_API_KEY;
     const per_page = 48;
+    const term = text || "";
     const { data } = await axios.get(
       `https://pixabay.com/api/?key=${key}&per_page=${per_page}&q=${term}&image_type=photo`
     );
     return data.hits;
+  };
+  const searchTerm = (text) => {
+    try {
+      setIsLoading(true);
+      const data = getData(text);
+      data.then((result) => {
+        setImages(result);
+        setIsLoading(false);
+      });
+    } catch (error) {
+      setError(error.message);
+    }
   };
   useEffect(() => {
     try {
@@ -28,7 +41,8 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="container my-10 mx-auto flex justify-center">
+    <div className="container my-10 mx-auto flex flex-col justify-center items-center">
+      <Search handleSearch={searchTerm} />
       {isLoading ? (
         <h1 className="text-6xl text-center mx-auto mt-16 font-semibold text-orange-600">
           Loading...
