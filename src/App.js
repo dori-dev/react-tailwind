@@ -20,6 +20,7 @@ function App() {
       const data = getData();
       data.then((result) => {
         setImages(result);
+        setIsLoading(false);
       });
     } catch (error) {
       setError(error.message);
@@ -28,11 +29,17 @@ function App() {
   }, []);
   return (
     <div className="container my-10 mx-auto flex justify-center">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-        {images.map((image, i) => (
-          <Card image={image} key={i} />
-        ))}
-      </div>
+      {isLoading ? (
+        <h1 className="text-6xl text-center mx-auto mt-16 font-semibold text-orange-600">
+          Loading...
+        </h1>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+          {images.map((image, i) => (
+            <Card image={image} key={i} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
