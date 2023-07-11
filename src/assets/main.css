@@ -568,6 +568,9 @@ video {
 .inline-block {
   display: inline-block;
 }
+.flex {
+  display: flex;
+}
 .table {
   display: table;
 }
@@ -591,6 +594,15 @@ video {
 }
 .resize {
   resize: both;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.gap-10 {
+  gap: 2.5rem;
+}
+.gap-8 {
+  gap: 2rem;
 }
 .overflow-hidden {
   overflow: hidden;
